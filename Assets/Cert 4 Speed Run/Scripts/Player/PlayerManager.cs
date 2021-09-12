@@ -1,7 +1,9 @@
+using CertIVSpeedrun.UI;
 using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using JetBrains.Annotations;
 
 namespace CertIVSpeedrun.Player
 {
@@ -30,21 +32,40 @@ namespace CertIVSpeedrun.Player
             }
         }
     #endregion
-    
 
-        public int weekNumber = 0;
-        public List<WeekPlayer> player = new List<WeekPlayer>(); // <<<--- ADD IN INSPECTOR ALL LEVELS
-
-        private void Start()
+        [Serializable] 
+        public class WeekPlayer : MonoBehaviour
         {
-            print("" + player.Count);
+            // The Object the Player will be with collider.
+            [NotNull] public GameObject player;
+            // List of all the to do list. 
+            [NotNull] public List<string> ToDoList = new List<string>();
+        }
+        
+        [Tooltip("This is the week number we are on")]
+        public static int weekNumber = 0;
+        
+        [SerializeField, Tooltip("This is the week number we are on")]
+        private List<WeekPlayer> player = new List<WeekPlayer>(); // <<<--- ADD IN INSPECTOR ALL LEVELS
+
+        public void NextLevel()
+        {
+            if(weekNumber + 1 > player.Count)
+            {
+                player[weekNumber].gameObject.SetActive(false);
+                weekNumber++;
+                player[weekNumber].gameObject.SetActive(true);
+                QuestManager.Instance.LevelUpUI(weekNumber, player[weekNumber].ToDoList);
+            }
+            else
+            {
+                EndTheGame();
+            }
         }
 
-        public string NextLevel()
+        private void EndTheGame()
         {
-            if (weekNumber + 1> player.Count)
-            {}
-            return ($"Week{weekNumber}");
+            print("GAME OVER MAN, GAME OVER");
         }
     }
 }
