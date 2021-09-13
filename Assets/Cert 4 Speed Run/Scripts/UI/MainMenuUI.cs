@@ -8,12 +8,21 @@ namespace CertIVSpeedrun.UI
 {
     public class MainMenuUI : MonoBehaviour
     {
-	    private PlayerManager player;
-	    private Animator myAnimator;
+	    public Animator myAnimator;
+	    private static readonly int property = Animator.StringToHash("Close Menu Trigger");
 
 	    public void PlayButton()
 	    {
-		    
+		   PlayerManager.Instance.StartGame();
+		   myAnimator.SetTrigger(property);
+	    }
+
+	    public void ExitButton()
+	    {
+		    Application.Quit();
+	    #if UNITY_EDITOR
+		    UnityEditor.EditorApplication.isPlaying = false;
+	    #endif
 	    }
 	}
 }

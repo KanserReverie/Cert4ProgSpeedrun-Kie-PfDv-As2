@@ -1,26 +1,41 @@
 using UnityEngine;
- 
-public class Lagging : MonoBehaviour
- 
+
+namespace CertIVSpeedrun.Camera
 {
-	public Transform target;
-	public float height = 3.0f;
-	public float length = 3.0f;
-	public float damping = 5.0f;
-	public bool followBehind = true;
-
-	void LateUpdate ()
+	/// <summary>
+	/// Camera Script to lag behind player.
+	/// </summary>
+	public class Lagging : MonoBehaviour
+ 
 	{
-		Vector3 wantedPosition;
+		public float distanceAhead = 5f;
+		public GameObject character;
+		private Vector3 prevPosition;
 
-		if(followBehind)
+		void Update()
 		{
-			wantedPosition = target.TransformPoint(-length, height, transform.position.z);
+			float newZ = 0;
+		
+			if(!CheckCharacterIdle())
+			{
+				newZ = distanceAhead;
+			}
+		
+			Vector3 targetPosition = new Vector3(0,0,newZ);
+
+			transform.localPosition = Vector3.Lerp (transform.position, targetPosition, 0.01f * Time.deltaTime);  
 		}
-		else
+
+		private bool CheckCharacterIdle()
 		{
-			wantedPosition = target.TransformPoint(-length, height, transform.position.z);
+			Vector3 curPos = character.transform.position;
+			if(prevPosition == curPos)
+			{
+				prevPosition = curPos;
+				return true;
+			}else{
+				return false;
+			}
 		}
-		transform.position = Vector3.Lerp (transform.position, wantedPosition, Time.deltaTime * damping);
 	}
 }

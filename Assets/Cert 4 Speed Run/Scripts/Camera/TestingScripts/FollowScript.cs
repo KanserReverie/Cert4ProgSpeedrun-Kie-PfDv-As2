@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace CertIVSpeedrun.GeneralScripts
+namespace CertIVSpeedrun.Camera
 {
     public class FollowScript : MonoBehaviour
     {
@@ -14,7 +14,7 @@ namespace CertIVSpeedrun.GeneralScripts
         [SerializeField] private float yOffset = 0;
 
         // Update is called once per frame
-        void FixedUpdate()
+        private void Update()
         {
             this.transform.position = new 
                 Vector3(

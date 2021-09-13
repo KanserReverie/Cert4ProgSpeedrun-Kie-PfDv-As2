@@ -44,7 +44,6 @@ namespace BladeRapid
                     _moveDir.y = jumpSpeed;
                 }
             }
-
             _moveDir.y -= _gravity * Time.deltaTime;
             _charC.Move(_moveDir * Time.deltaTime);
         }

@@ -6,12 +6,12 @@ using UnityEngine;
 
 namespace CertIVSpeedrun.Player
 {
-	//[Serializable] 
-	//public class WeekPlayer : MonoBehaviour
-	//{
-	//	// The Object the Player will be with collider.
-	//	[NotNull] public GameObject player;
-	//	// List of all the to do list. 
-	//	[NotNull] public List<string> ToDoList = new List<string>();
-	//}
+	[Serializable] 
+	public class WeekPlayer : MonoBehaviour
+	{
+		// The Object the Player will be with collider.
+		public GameObject player;
+		// List of all the to do list. 
+		public List<string> ToDoList = new List<string>();
+	}
 }

@@ -33,10 +33,16 @@ namespace CertIVSpeedrun.UI
             }
         }
     #endregion
-        
-        public Text weekNumber;
-        public Text toDoList;
 
+        [SerializeField] private GameObject questPanel;
+        [SerializeField] private Text weekNumber;
+        [SerializeField] private Text toDoList;
+
+        public void StartGame()
+        {
+            questPanel.SetActive(true);
+        }
+        
         public void LevelUpUI(int _weekNumber, [NotNull] List <string> _toDoList)
         {
             toDoList.text = (""); // <<<--- Resets Quests
