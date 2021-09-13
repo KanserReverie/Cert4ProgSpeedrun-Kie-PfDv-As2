@@ -12,6 +12,6 @@ namespace CertIVSpeedrun.Player
 		// The Object the Player will be with collider.
 		public GameObject player;
 		// List of all the to do list. 
-		public List<string> ToDoList = new List<string>();
+		public List<string> toDoList = new List<string>();
 	}
 }

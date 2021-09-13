@@ -57,7 +57,7 @@ namespace CertIVSpeedrun.Player
                 // Turns player on.
                 player[weekNumber].gameObject.SetActive(true);
                 // Updates the quests.
-                QuestManager.Instance.LevelUpUI(weekNumber, player[weekNumber].ToDoList);
+                QuestManager.Instance.LevelUpUI(weekNumber, player[weekNumber].toDoList);
             }
             else
             {
@@ -74,6 +74,7 @@ namespace CertIVSpeedrun.Player
         {
             QuestManager.Instance.StartGame();
             NextLevel();
+            mainCamera.enabled = true;
         }
     }
 }

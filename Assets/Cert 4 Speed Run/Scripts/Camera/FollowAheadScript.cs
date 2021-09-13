@@ -29,7 +29,7 @@ namespace CertIVSpeedrun.Camera
             pointToMoveTo = new Vector3
                 (followTransform.position.x + xOffset, 
                     followTransform.position.y + yOffset,
-                    this.transform.position.z) + myPlayerRigidbody.velocity*-slowMultiplier;
+                    this.transform.position.z) + myPlayerRigidbody.velocity*slowMultiplier;
 
             transform.localPosition = Vector3.Lerp (transform.position, pointToMoveTo, Time.deltaTime*speed);  
         }
