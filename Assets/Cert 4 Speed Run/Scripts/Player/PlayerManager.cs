@@ -38,24 +38,53 @@ namespace CertIVSpeedrun.Player
         private List<WeekPlayer> player = new List<WeekPlayer>(); // <<<--- ADD IN INSPECTOR ALL LEVELS
 
         [SerializeField] private FollowAheadScript mainCamera;
+        [SerializeField] private Rigidbody myPlayerRigidbody;
 
         public void NextLevel()
         {
             // If this isn't the final week, level up.
             if(weekNumber + 1 < player.Count)
             {
+                Rigidbody myOldRigidbody = new Rigidbody();
+                Vector3 myOldRigidbodyPosition = new Vector3();
+                Vector3 myOldRigidbodyVelocity = new Vector3();
+                Quaternion myOldRigidbodyRotation = new Quaternion();
+                Vector3 myOldRigidbodyAngularVelocity = new Vector3();
+                
+                if(weekNumber > 0)
+                {
+                    // Old players Rigidbody.
+                    myOldRigidbody = player[weekNumber].player.GetComponent<Rigidbody>();
+                    myOldRigidbodyPosition = myOldRigidbody.position;
+                    myOldRigidbodyVelocity = myOldRigidbody.velocity;
+                    myOldRigidbodyAngularVelocity = myOldRigidbody.angularVelocity;
+                    myOldRigidbodyRotation = myOldRigidbody.rotation;
+                }
+                
                 // Saves the position of the old player.
                 Vector3 oldPlayerPosition = player[weekNumber].player.gameObject.transform.position;
                 // Moves the player to the old player
                 player[weekNumber].player.gameObject.transform.position = oldPlayerPosition;
+                // Gets the next Rigidbody.
+                myPlayerRigidbody = player[weekNumber + 1].player.GetComponent<Rigidbody>();
                 // Camera will track the new player.
-                mainCamera.FollowThisPlayer(player[weekNumber+1].player.transform,player[weekNumber+1].player.GetComponent<Rigidbody>());
+                mainCamera.FollowThisPlayer(player[weekNumber+1].player.transform,myPlayerRigidbody);
                 // Turn off the old player.
                 player[weekNumber].gameObject.SetActive(false);
                 // Next week.
                 weekNumber++;
                 // Turns player on.
                 player[weekNumber].gameObject.SetActive(true);
+                
+                // Makes the new Rigidbody the same as the last one.
+                if(weekNumber > 1)
+                {
+                    myPlayerRigidbody.position = myOldRigidbodyPosition;
+                    myPlayerRigidbody.velocity = myOldRigidbodyVelocity;
+                    myPlayerRigidbody.angularVelocity = myOldRigidbodyAngularVelocity;
+                    myPlayerRigidbody.rotation = myOldRigidbodyRotation;
+                }
+                
                 // Updates the quests.
                 QuestManager.Instance.LevelUpUI(weekNumber, player[weekNumber].toDoList);
             }

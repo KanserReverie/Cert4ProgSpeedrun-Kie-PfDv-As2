@@ -23,7 +23,7 @@ namespace CertIVSpeedrun.Camera
         private Vector3 pointToMoveTo;
         
         // Update is called once per frame
-        private void Update()
+        private void LateUpdate()
         {
             // this.transform.position = new Vector3(followTransform.position.x + xOffset, followTransform.position.y + yOffset, this.transform.position.z) + myPlayerRigidbody.velocity*slowMultiplier;
             pointToMoveTo = new Vector3

@@ -29,17 +29,17 @@ namespace BladeRapid
             if(_charC.isGrounded)
             {
                 // If holding down space
-                if(Input.GetKey(KeyCode.Space))
+                if(Input.GetKey(KeyCode.UpArrow)||Input.GetKey(KeyCode.Space))
                 {
                     moveSpeed = runSpeed;
                 }
-                else if(!Input.GetKey(KeyCode.Space))
+                else if(!Input.GetKey(KeyCode.UpArrow) ||Input.GetKey(KeyCode.Space))
                 {
                     moveSpeed = walkSpeed;
                 }
 
                 _moveDir = transform.TransformDirection(new Vector3(moveSpeed, 0, 0));
-                if(Input.GetKeyUp(KeyCode.Space))
+                if(Input.GetKeyUp(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
                 {
                     _moveDir.y = jumpSpeed;
                 }
