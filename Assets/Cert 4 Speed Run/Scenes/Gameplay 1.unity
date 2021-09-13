@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questPanel: {fileID: 1953692782}
-  weekNumber: {fileID: 2853675146574511532}
+  weekNumber: {fileID: 2853675146026289980}
   toDoList: {fileID: 2853675146947795336}
 --- !u!1 &598563707
 GameObject:
@@ -1185,9 +1185,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player:
+  - {fileID: 598563709}
   - {fileID: 2141818780}
-  - {fileID: 2141818780}
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 1976090110}
 --- !u!1 &1029554651
 GameObject:
   m_ObjectHideFlags: 0
@@ -2282,7 +2282,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0
-  m_UseGravity: 0
+  m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 120
@@ -2965,6 +2965,8 @@ MonoBehaviour:
   followTransform: {fileID: 876919304}
   xOffset: 3
   yOffset: 0.5
+  slowMultiplier: 0.06
+  speed: 10
   myPlayerRigidbody: {fileID: 876919308}
 --- !u!1 &2070419381
 GameObject:
@@ -3263,7 +3265,7 @@ GameObject:
   - component: {fileID: 2853675146026289923}
   - component: {fileID: 2853675146026289980}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Week 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

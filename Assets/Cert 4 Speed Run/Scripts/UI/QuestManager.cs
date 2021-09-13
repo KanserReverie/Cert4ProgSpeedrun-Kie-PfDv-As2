@@ -1,11 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
 using UnityEngine.UI;
-using CertIVSpeedrun.Player;
 using JetBrains.Annotations;
-using System;
 
 namespace CertIVSpeedrun.UI
 {
@@ -50,7 +46,7 @@ namespace CertIVSpeedrun.UI
             
             for(int i = 0; i < _toDoList.Count; i++)
             {
-                toDoList.text += (_toDoList + "");
+                toDoList.text += (_toDoList[i] + "");
 
                 if(i + 1 < _toDoList.Count)
                 {
