@@ -1,3 +1,4 @@
+using BladeRapid;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -47,6 +48,7 @@ namespace CertIVSpeedrun.Player.Week1
         {
             UIControls.SetActive(true);
             groundChecker.SetActive(true);
+            PlayerControlsManager.Instance.isReady = true;
         }
     }
 }

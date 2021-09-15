@@ -42,6 +42,7 @@ namespace CertIVSpeedrun.Player
         
             public int defaultAdditionalJumps = 1;
             int additionalJumps;
+            public bool isReady=false;
         
         
         
@@ -52,10 +53,13 @@ namespace CertIVSpeedrun.Player
         
             void Update()
             {
-                Move();
-                Jump();
-                BetterJump();
-                CheckIfGrounded();
+                if(isReady)
+                {
+                    Move();
+                    Jump();
+                    BetterJump();
+                    CheckIfGrounded();
+                }
             }
         
         
