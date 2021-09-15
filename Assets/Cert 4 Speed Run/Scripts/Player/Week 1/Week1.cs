@@ -11,6 +11,7 @@ namespace CertIVSpeedrun.Player.Week1
         [SerializeField] private Rigidbody myRigidbody;
         [SerializeField] private Button step1Btn;
         [SerializeField] public GameObject UIControls;
+        [SerializeField] public GameObject groundChecker;
         [SerializeField] private Animator animatorControler;
         private static readonly int property = Animator.StringToHash("Add Controller");
 
@@ -45,6 +46,7 @@ namespace CertIVSpeedrun.Player.Week1
         public void OpenUIControls()
         {
             UIControls.SetActive(true);
+            groundChecker.SetActive(true);
         }
     }
 }

@@ -1,3 +1,4 @@
+using BladeRapid;
 using CertIVSpeedrun.UI;
 using CertIVSpeedrun.Camera;
 using System.Collections.Generic;
@@ -54,7 +55,7 @@ namespace CertIVSpeedrun.Player
                 if(weekNumber > 0)
                 {
                     // Old players Rigidbody.
-                    myOldRigidbody = player[weekNumber].player.GetComponent<Rigidbody>();
+                    myOldRigidbody = player[weekNumber].player.GetComponentInChildren<Rigidbody>();
                     myOldRigidbodyPosition = myOldRigidbody.position;
                     myOldRigidbodyVelocity = myOldRigidbody.velocity;
                     myOldRigidbodyAngularVelocity = myOldRigidbody.angularVelocity;
@@ -66,7 +67,7 @@ namespace CertIVSpeedrun.Player
                 // Moves the player to the old player
                 player[weekNumber].player.gameObject.transform.position = oldPlayerPosition;
                 // Gets the next Rigidbody.
-                myPlayerRigidbody = player[weekNumber + 1].player.GetComponent<Rigidbody>();
+                myPlayerRigidbody = player[weekNumber + 1].player.GetComponentInChildren<Rigidbody>();
                 // Camera will track the new player.
                 mainCamera.FollowThisPlayer(player[weekNumber+1].player.transform,myPlayerRigidbody);
                 // Turn off the old player.
@@ -83,6 +84,7 @@ namespace CertIVSpeedrun.Player
                     myPlayerRigidbody.velocity = myOldRigidbodyVelocity;
                     myPlayerRigidbody.angularVelocity = myOldRigidbodyAngularVelocity;
                     myPlayerRigidbody.rotation = myOldRigidbodyRotation;
+                    PlayerControlsManager.Instance.myRigidbody = myPlayerRigidbody;
                 }
                 
                 // Updates the quests.
