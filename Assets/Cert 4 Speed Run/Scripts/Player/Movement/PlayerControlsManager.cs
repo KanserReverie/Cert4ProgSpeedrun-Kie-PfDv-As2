@@ -47,8 +47,6 @@ namespace CertIVSpeedrun.Player
         
             void Start()
             {
-                myRigidbody = GetComponent<Rigidbody>();
-        
                 additionalJumps = defaultAdditionalJumps;
             }
         
