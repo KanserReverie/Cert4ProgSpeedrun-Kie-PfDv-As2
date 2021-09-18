@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using CertIVSpeedrun.Camera;
 
 namespace CertIVSpeedrun.Player.Week1
 {
@@ -25,7 +26,7 @@ namespace CertIVSpeedrun.Player.Week1
 
         private void Update()
         {
-            if(gameObject.transform.position.x > 0 && myRigidbody.velocity.magnitude <= 0.1f)
+            if(gameObject.transform.position.x > 0 && myRigidbody.velocity.magnitude <= 1f)
             {
                 OpenPlayer();
                 
@@ -49,6 +50,11 @@ namespace CertIVSpeedrun.Player.Week1
             UIControls.SetActive(true);
             groundChecker.SetActive(true);
             PlayerControlsManager.Instance.isReady = true;
+        }
+
+        public void ZoomOut()
+        {
+            FollowAheadScript.Instance.ZoomOutCam();
         }
     }
 }

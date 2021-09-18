@@ -72,6 +72,7 @@ namespace CertIVSpeedrun.Player
             {
                 leftButtonDown = true;
             }
+            // This will be for the move left button release.
             public void MoveLeftButtonUp()
             {
                 leftButtonDown = false;
@@ -82,7 +83,7 @@ namespace CertIVSpeedrun.Player
             {
                 rightButtonDown = true;
             }
-            // This will be for the move right button.
+            // This will be for the move right button release.
             public void MoveRightButtonUp()
             {
                 rightButtonDown = false;
@@ -92,7 +93,7 @@ namespace CertIVSpeedrun.Player
             {
                 jumpButtonDown = true;
             } 
-            // This will be for the jump button.
+            // This will be for the jump button release.
             public void JumpButtonUp()
             {
                 jumpButtonDown = false;
@@ -103,17 +104,16 @@ namespace CertIVSpeedrun.Player
                 float x = Input.GetAxis("Horizontal");
                 if(leftButtonDown || rightButtonDown)
                 {
-                    if(leftButtonDown && rightButtonDown)
+                    x = 0;
+                    
+                    if (leftButtonDown)
                     {
-                        x = 0;
+                        x =+ -1;
                     }
-                    else if (leftButtonDown)
+                    
+                    if (rightButtonDown)
                     {
-                        x = -1;
-                    }
-                    else if (rightButtonDown)
-                    {
-                        x = 1;
+                        x =+ 1;
                     }
                 }
                 float moveBy = x * speed;
