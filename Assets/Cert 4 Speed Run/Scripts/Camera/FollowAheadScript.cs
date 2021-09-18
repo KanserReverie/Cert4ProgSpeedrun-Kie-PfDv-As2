@@ -52,6 +52,7 @@ namespace CertIVSpeedrun.Camera
         [SerializeField] private float newYoffset = 2.5f;
         [SerializeField] private float newXoffset = 2;
         [SerializeField] private bool turnOnGUI = false;
+        [SerializeField] private bool lerpYDirection = true;
 
 
         private void Awake()
@@ -64,7 +65,15 @@ namespace CertIVSpeedrun.Camera
         private void LateUpdate()
         {
             // this.transform.position = new Vector3(followTransform.position.x + xOffset, followTransform.position.y + yOffset, this.transform.position.z) + myPlayerRigidbody.velocity*slowMultiplier;
-            pointToMoveTo = new Vector3(followTransform.position.x + xOffset, followTransform.position.y + yOffset, this.transform.position.z) + myPlayerRigidbody.velocity*slowMultiplier;
+
+            if(lerpYDirection)
+            {
+                pointToMoveTo = new Vector3(followTransform.position.x + xOffset, followTransform.position.y + yOffset, this.transform.position.z) + myPlayerRigidbody.velocity*slowMultiplier;
+            }
+            else
+            {
+                pointToMoveTo = new Vector3(followTransform.position.x + xOffset+ myPlayerRigidbody.velocity.x*slowMultiplier, this.transform.position.y, this.transform.position.z);
+            }
             transform.localPosition = Vector3.Lerp (transform.position, pointToMoveTo, Time.deltaTime*speed);
         }
 
@@ -83,6 +92,7 @@ namespace CertIVSpeedrun.Camera
 
         private IEnumerator NewCameraOffset(float _zoomOutTime)
         {
+            lerpYDirection = true;
             float timeElapsed = 0;
 
             float originalXOffset = xOffset;
@@ -97,6 +107,7 @@ namespace CertIVSpeedrun.Camera
 
             xOffset = newXoffset;
             yOffset = newYoffset;
+            lerpYDirection = false;
             yield return null;
         }
 
