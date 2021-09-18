@@ -47,6 +47,7 @@ namespace CertIVSpeedrun.Player
             [SerializeField] private bool leftButtonDown = false;
             [SerializeField] private bool rightButtonDown = false;
             [SerializeField] private bool jumpButtonDown= false;
+            [SerializeField] private bool useButtonDown= false;
             
         
         

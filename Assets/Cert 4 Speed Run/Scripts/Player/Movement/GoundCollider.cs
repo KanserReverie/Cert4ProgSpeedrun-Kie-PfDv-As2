@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,16 +16,18 @@ namespace CertIVSpeedrun.Player
         void GroundCheck()
         {
             RaycastHit hit;
-            float distance = 1f;
+            float distance = 0.3f;
             Vector3 dir = new Vector3(0, -1);
 
-            if(Physics.Raycast(transform.position, dir, out hit, distance))
+            int layerMask = LayerMask.GetMask($"NormalObjects");
+            
+            if(!Physics.Raycast(transform.position, dir, out hit, distance,~layerMask))
             {
-                PlayerControlsManager.Instance.isGrounded = true;
+                PlayerControlsManager.Instance.isGrounded = false;
             }
             else
             {
-                PlayerControlsManager.Instance.isGrounded = false;
+                PlayerControlsManager.Instance.isGrounded = true;
             }
         }
     }
