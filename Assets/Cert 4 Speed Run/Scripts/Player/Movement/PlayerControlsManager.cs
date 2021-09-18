@@ -130,6 +130,8 @@ namespace CertIVSpeedrun.Player
                         myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
                         additionalJumps--;
                     }
+
+                    jumpButtonDown = false;
                 }
             }
 
