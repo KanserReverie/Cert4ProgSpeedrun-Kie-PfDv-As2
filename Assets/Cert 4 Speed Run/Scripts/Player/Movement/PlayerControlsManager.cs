@@ -1,6 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using CertIVSpeedrun.Environment;
+using System;
+using System.Runtime.CompilerServices;
 
 namespace CertIVSpeedrun.Player
 {
@@ -48,12 +52,18 @@ namespace CertIVSpeedrun.Player
             [SerializeField] private bool rightButtonDown = false;
             [SerializeField] private bool jumpButtonDown= false;
             [SerializeField] private bool useButtonDown= false;
+
+            [SerializeField] private Button activateButton;
+
+            public ActivatePoint currentPointActive; 
             
         
         
             void Start()
             {
+                currentPointActive = null;
                 additionalJumps = defaultAdditionalJumps;
+                activateButton.interactable = false;
             }
         
             void Update()
@@ -67,6 +77,30 @@ namespace CertIVSpeedrun.Player
                 }
             }
 
+
+            // If the point is now active then do the thing.
+            public void ThisPointIsActive(ActivatePoint _currentActivePoint)
+            {
+                currentPointActive = _currentActivePoint;
+                activateButton.interactable = true;
+            }
+
+            // For when the Activate Button is hit.
+            public void ActivateButton()
+            {
+                if(currentPointActive != null)
+                {
+                    currentPointActive.ActivateThisPoint();
+                }
+                activateButton.interactable = false;
+            }
+            
+            // If the point is now active then do the thing.
+            public void LeaveActivePoint()
+            {
+                activateButton.interactable = false;
+                currentPointActive = null;
+            }
 
             // This will be for the move left button.
             public void MoveLeftButton()

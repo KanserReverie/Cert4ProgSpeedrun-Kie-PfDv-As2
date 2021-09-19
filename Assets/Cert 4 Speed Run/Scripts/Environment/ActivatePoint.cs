@@ -4,36 +4,66 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using CertIVSpeedrun.Player;
 
-public class ActivatePoint : MonoBehaviour
+namespace CertIVSpeedrun.Environment
 {
-	// Point where can activate the button.
-	[SerializeField] private GameObject ActivePoint;
-
-	private bool isInRange = false;
-	private bool isClicked = false;
-
-	// Start is called before the first frame update
-	void Start() { }
-
-	// Update is called once per frame
-	void Update()
+	public class ActivatePoint : MonoBehaviour
 	{
-		
-	}
+		// Has this point been clicked;
+		private bool isClicked = false;
+		[SerializeField] private Material activeMaterial;
+		[SerializeField] private Material usedMaterial;
+		[SerializeField] private MeshRenderer PointMesh;
 
-	private void OnCollisionEnter(Collision other)
-	{
-		if(other.collider.gameObject.layer == 10)
+		[SerializeField] private GameObject[] objectsToDeleteOnActivation;
+
+
+		private void Start()
 		{
-			isInRange = true;
+			PointMesh = GetComponent<MeshRenderer>();
+			PointMesh.material = activeMaterial;
+			isClicked = false;
 		}
-	}
-	private void OnCollisionExit(Collision other)
-	{
-		if(other.collider.gameObject.layer == 10)
+
+		private void OnTriggerEnter(Collider other)
 		{
-			isInRange = false;
+			if(!isClicked)
+			{
+				if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+				{
+					PlayerControlsManager.Instance.ThisPointIsActive(this);
+				}
+			}
+		}
+
+		private void OnTriggerExit(Collider other)
+		{
+			if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
+			{
+				PlayerControlsManager.Instance.LeaveActivePoint();
+			}
+		}
+
+		public void ActivateThisPoint()
+		{
+			isClicked = true;
+			PointMesh.material = usedMaterial;
+			StartCoroutine(nameof(DeleteGameObjects));
+		}
+
+		// Deletes all the game objects in the array.
+		private IEnumerator DeleteGameObjects()
+		{
+			if(objectsToDeleteOnActivation != null)
+			{
+				for(int i = 0; i < objectsToDeleteOnActivation.Length; i++)
+				{
+					GameObject o = objectsToDeleteOnActivation[i];
+					o.gameObject.SetActive(false);
+					yield return (1.2f);
+				}
+			}
 		}
 	}
 }
