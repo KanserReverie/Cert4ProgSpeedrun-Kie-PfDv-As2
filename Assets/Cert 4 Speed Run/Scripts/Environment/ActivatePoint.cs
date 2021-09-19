@@ -1,28 +1,22 @@
-using BladeRapid;
 using CertIVSpeedrun.Player;
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using CertIVSpeedrun.Player;
 
 namespace CertIVSpeedrun.Environment
 {
 	public class ActivatePoint : MonoBehaviour
 	{
 		// Has this point been clicked;
-		private bool isClicked = false;
+		private bool isClicked;
 		[SerializeField] private Material activeMaterial;
 		[SerializeField] private Material usedMaterial;
-		[SerializeField] private MeshRenderer PointMesh;
-
+		[SerializeField] private MeshRenderer pointMesh;
 		[SerializeField] private GameObject[] objectsToDeleteOnActivation;
-
 
 		private void Start()
 		{
-			PointMesh = GetComponent<MeshRenderer>();
-			PointMesh.material = activeMaterial;
+			pointMesh = GetComponent<MeshRenderer>();
+			pointMesh.material = activeMaterial;
 			isClicked = false;
 		}
 
@@ -48,7 +42,7 @@ namespace CertIVSpeedrun.Environment
 		public void ActivateThisPoint()
 		{
 			isClicked = true;
-			PointMesh.material = usedMaterial;
+			pointMesh.material = usedMaterial;
 			StartCoroutine(nameof(DeleteGameObjects));
 		}
 

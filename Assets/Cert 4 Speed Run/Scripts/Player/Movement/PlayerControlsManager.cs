@@ -35,23 +35,18 @@ namespace CertIVSpeedrun.Player
         
             public float speed = 2;
             public float jumpForce = 4;
-        
             public float fallMultiplier = 2.5f;
             public float lowJumpMultiplier = 2f;
-        
             public bool isGrounded = false;
-        
             public float rememberGroundedFor;
-            float lastTimeGrounded;
-        
+            private float lastTimeGrounded;
             public int defaultAdditionalJumps = 1;
-            int additionalJumps;
+            private int additionalJumps;
             public bool isReady=false;
 
             [SerializeField] private bool leftButtonDown = false;
             [SerializeField] private bool rightButtonDown = false;
             [SerializeField] private bool jumpButtonDown= false;
-            [SerializeField] private bool useButtonDown= false;
 
             [SerializeField] private Button activateButton;
 

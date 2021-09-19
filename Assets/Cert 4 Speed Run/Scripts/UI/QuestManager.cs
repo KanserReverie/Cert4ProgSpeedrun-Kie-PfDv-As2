@@ -31,12 +31,14 @@ namespace CertIVSpeedrun.UI
     #endregion
 
         [SerializeField] private GameObject questPanel;
+        [SerializeField] private GameObject informationCanvas;
         [SerializeField] private Text weekNumber;
         [SerializeField] private Text toDoList;
 
         public void StartGame()
         {
             questPanel.SetActive(true);
+            informationCanvas.SetActive(true);
         }
         
         public void LevelUpUI(int _weekNumber, [NotNull] List <string> _toDoList)
