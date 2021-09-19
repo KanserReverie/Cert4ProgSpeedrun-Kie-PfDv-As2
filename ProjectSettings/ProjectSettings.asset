@@ -146,6 +146,7 @@ PlayerSettings:
   androidSupportedAspectRatio: 1
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
+    Android: com.KieranReverie.CertIVSpeedRun
     Standalone: com.KieranReverie.CertIVSpeedRun
   buildNumber:
     Standalone: 0

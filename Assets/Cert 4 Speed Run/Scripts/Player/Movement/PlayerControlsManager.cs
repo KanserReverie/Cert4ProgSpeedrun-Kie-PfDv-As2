@@ -50,12 +50,14 @@ namespace CertIVSpeedrun.Player
 
             [SerializeField] private Button activateButton;
 
-            public ActivatePoint currentPointActive; 
+            public ActivatePoint currentPointActive;
+            private bool pointActive;
             
         
         
             void Start()
             {
+                pointActive = false;
                 currentPointActive = null;
                 additionalJumps = defaultAdditionalJumps;
                 activateButton.interactable = false;
@@ -69,6 +71,30 @@ namespace CertIVSpeedrun.Player
                     Jump();
                     BetterJump();
                     CheckIfGrounded();
+                    CheckButtonActivation();
+                    Quit();
+                }
+            }
+
+            private void Quit()
+            {
+                if(Input.GetKeyDown(KeyCode.Escape))
+                {
+                    Application.Quit();
+                #if UNITY_EDITOR
+                    UnityEditor.EditorApplication.isPlaying = false;
+                #endif
+                }
+            }
+
+            private void CheckButtonActivation()
+            {
+                if(pointActive)
+                {
+                    if(Input.GetButtonDown("Fire1") || Input.GetButtonDown("Fire3") || Input.GetButtonDown("Submit"))
+                    {
+                        ActivateButton();
+                    }
                 }
             }
 
@@ -78,6 +104,7 @@ namespace CertIVSpeedrun.Player
             {
                 currentPointActive = _currentActivePoint;
                 activateButton.interactable = true;
+                pointActive = true;
             }
 
             // For when the Activate Button is hit.
@@ -88,6 +115,7 @@ namespace CertIVSpeedrun.Player
                     currentPointActive.ActivateThisPoint();
                 }
                 activateButton.interactable = false;
+                pointActive = false;
             }
             
             // If the point is now active then do the thing.
@@ -95,6 +123,7 @@ namespace CertIVSpeedrun.Player
             {
                 activateButton.interactable = false;
                 currentPointActive = null;
+                pointActive = false;
             }
 
             // This will be for the move left button.
