@@ -68,7 +68,7 @@ namespace CertIVSpeedrun.Player
                 if(isReady)
                 {
                     Move();
-                    Jump();
+                    if(Input.GetButtonDown("Jump")) {Jump();}
                     BetterJump();
                     CheckIfGrounded();
                     CheckButtonActivation();
@@ -147,16 +147,6 @@ namespace CertIVSpeedrun.Player
             {
                 rightButtonDown = false;
             }
-            // This will be for the jump button.
-            public void JumpButton()
-            {
-                jumpButtonDown = true;
-            } 
-            // This will be for the jump button release.
-            public void JumpButtonUp()
-            {
-                jumpButtonDown = false;
-            } 
 
             public void Move()
             {
@@ -181,15 +171,10 @@ namespace CertIVSpeedrun.Player
 
             public void Jump()
             {
-                if(Input.GetButtonDown("Jump") || jumpButtonDown)
+                if(isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor || additionalJumps > 0)
                 {
-                    if(isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor || additionalJumps > 0)
-                    {
-                        myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
-                        additionalJumps--;
-                    }
-
-                    jumpButtonDown = false;
+                    myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
+                    additionalJumps--;
                 }
             }
 
@@ -200,7 +185,7 @@ namespace CertIVSpeedrun.Player
                     Vector2 HoriVerti = Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
                     myRigidbody.velocity += new Vector3(HoriVerti.x, HoriVerti.y, 0);
                 }
-                else if (myRigidbody.velocity.y > 0 && !Input.GetKey(KeyCode.Space)) 
+                else if (myRigidbody.velocity.y > 0 && !Input.GetButtonDown("Jump")) 
                 {
                     Vector2 HoriVerti2 = Vector2.up * Physics2D.gravity * (lowJumpMultiplier - 1) * Time.deltaTime;
                     myRigidbody.velocity += new Vector3(HoriVerti2.x, HoriVerti2.y, 0);
