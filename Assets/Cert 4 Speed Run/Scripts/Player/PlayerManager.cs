@@ -63,7 +63,7 @@ namespace CertIVSpeedrun.Player
 
         private void ChangeRigidbodyAndCamera()
         {
-                Rigidbody myOldRigidbody = new Rigidbody();
+            Rigidbody myOldRigidbody = new Rigidbody();
                 Vector3 myOldRigidbodyPosition = new Vector3();
                 Vector3 myOldRigidbodyVelocity = new Vector3();
                 Quaternion myOldRigidbodyRotation = new Quaternion();
@@ -85,12 +85,6 @@ namespace CertIVSpeedrun.Player
                 player[weekNumber].player.gameObject.transform.position = oldPlayerPosition;
                 // Gets the next Rigidbody.
                 myPlayerRigidbody = player[weekNumber + 1].player.GetComponentInChildren<Rigidbody>();
-                // Camera will track the new player.
-                mainCamera.FollowThisPlayer(player[weekNumber+1].player.transform,myPlayerRigidbody);
-                // Turn off the old player.
-                player[weekNumber].gameObject.SetActive(false);
-                // Turns player on.
-                player[weekNumber+1].gameObject.SetActive(true);
                 
                 // Makes the new Rigidbody the same as the last one.
                 if(weekNumber+1 > 1)
@@ -101,6 +95,12 @@ namespace CertIVSpeedrun.Player
                     myPlayerRigidbody.rotation = myOldRigidbodyRotation;
                     PlayerControlsManager.Instance.myRigidbody = myPlayerRigidbody;
                 }
+                // Turn off the old player.
+                player[weekNumber].gameObject.SetActive(false);
+                // Turns player on.
+                player[weekNumber+1].gameObject.SetActive(true);
+                // Camera will track the new player.
+                mainCamera.FollowThisPlayer(player[weekNumber+1].player.transform,myPlayerRigidbody);
         }
 
         private void EndTheGame()

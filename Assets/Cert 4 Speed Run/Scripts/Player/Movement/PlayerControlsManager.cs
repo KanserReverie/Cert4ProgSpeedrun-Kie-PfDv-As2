@@ -38,6 +38,7 @@ namespace CertIVSpeedrun.Player
             public float fallMultiplier = 2.5f;
             public float lowJumpMultiplier = 2f;
             public bool isGrounded = false;
+            public bool leftground = false;
             public float rememberGroundedFor;
             private float lastTimeGrounded;
             public int defaultAdditionalJumps = 1;
@@ -46,12 +47,12 @@ namespace CertIVSpeedrun.Player
 
             [SerializeField] private bool leftButtonDown = false;
             [SerializeField] private bool rightButtonDown = false;
-            [SerializeField] private bool jumpButtonDown= false;
 
             [SerializeField] private Button activateButton;
 
             public ActivatePoint currentPointActive;
             private bool pointActive;
+            private bool jumpingNow= false;
             
         
         
@@ -171,10 +172,11 @@ namespace CertIVSpeedrun.Player
 
             public void Jump()
             {
-                if(isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor || additionalJumps > 0)
+                if((isGrounded || Time.time - lastTimeGrounded <= rememberGroundedFor )&& additionalJumps >= 0)
                 {
                     myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
                     additionalJumps--;
+                    jumpingNow = true;
                 }
             }
 
@@ -184,6 +186,7 @@ namespace CertIVSpeedrun.Player
                 {
                     Vector2 HoriVerti = Vector2.up * Physics2D.gravity * (fallMultiplier - 1) * Time.deltaTime;
                     myRigidbody.velocity += new Vector3(HoriVerti.x, HoriVerti.y, 0);
+                    jumpingNow = false;
                 }
                 else if (myRigidbody.velocity.y > 0 && !Input.GetButtonDown("Jump")) 
                 {
@@ -194,16 +197,18 @@ namespace CertIVSpeedrun.Player
         
             void CheckIfGrounded() {
         
-                if (isGrounded) 
+                if (isGrounded && !jumpingNow) 
                 {
                     additionalJumps = defaultAdditionalJumps;
+                    leftground = false;
                 }
                 else 
                 {
-                    if (isGrounded) 
+                    if (!leftground) 
                     {
                         lastTimeGrounded = Time.time;
                     }
+                    leftground = true;
                     isGrounded = false;
                 }
             }

@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using CertIVSpeedrun.Camera;
+using CertIVSpeedrun.Player;
 
 namespace CertIVSpeedrun.Player.Week2
 {
@@ -16,12 +16,7 @@ namespace CertIVSpeedrun.Player.Week2
         private void Start()
         {
             myRigidbody = GetComponent<Rigidbody>();
-            Levelup();
-        }
-
-        private void Levelup()
-        {
-            throw new NotImplementedException();
+            PlayerControlsManager.Instance.speed += 1;
         }
     }
 }

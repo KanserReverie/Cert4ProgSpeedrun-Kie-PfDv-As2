@@ -64,17 +64,17 @@ namespace CertIVSpeedrun.Camera
         // Update is called once per frame
         private void LateUpdate()
         {
-            // this.transform.position = new Vector3(followTransform.position.x + xOffset, followTransform.position.y + yOffset, this.transform.position.z) + myPlayerRigidbody.velocity*slowMultiplier;
-
             if(lerpYDirection)
             {
-                pointToMoveTo = new Vector3(followTransform.position.x + xOffset, followTransform.position.y + yOffset, this.transform.position.z) + myPlayerRigidbody.velocity*slowMultiplier;
+                pointToMoveTo = new Vector3(followTransform.position.x + xOffset, followTransform.position.y + yOffset, this.transform.position.z) + myPlayerRigidbody.velocity * slowMultiplier;
             }
             else
             {
-                pointToMoveTo = new Vector3(followTransform.position.x + xOffset+ myPlayerRigidbody.velocity.x*slowMultiplier, this.transform.position.y, this.transform.position.z);
+                pointToMoveTo = new Vector3(followTransform.position.x + xOffset + myPlayerRigidbody.velocity.x * slowMultiplier, this.transform.position.y, this.transform.position.z);
             }
-            transform.localPosition = Vector3.Lerp (transform.position, pointToMoveTo, Time.deltaTime*speed);
+
+            transform.localPosition = Vector3.Lerp(transform.position, pointToMoveTo, Time.deltaTime * speed);
+
         }
 
         public void FollowThisPlayer(Transform _PlayerTransform, Rigidbody _PlayerRigidbody)
