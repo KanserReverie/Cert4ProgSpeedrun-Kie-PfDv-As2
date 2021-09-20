@@ -47,7 +47,7 @@ namespace CertIVSpeedrun.Camera
         
         [Header("Zoom Out Data")]
         [SerializeField] private UnityEngine.Camera mainCamera;
-        [SerializeField] private float zoomOutTime = 1.2f;
+        [SerializeField] private float zoomOutTime = 0.35f;
         [SerializeField] private float zoomOutDistance = 7;
         [SerializeField] private float newYoffset = 2.5f;
         [SerializeField] private float newXoffset = 2;

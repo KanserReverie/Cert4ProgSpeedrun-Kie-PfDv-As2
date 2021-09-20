@@ -1,6 +1,7 @@
 using BladeRapid;
 using CertIVSpeedrun.UI;
 using CertIVSpeedrun.Camera;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -41,8 +42,14 @@ namespace CertIVSpeedrun.Player
         [SerializeField] private FollowAheadScript mainCamera;
         [SerializeField] private Rigidbody myPlayerRigidbody;
 
+        private void Start()
+        {
+            weekNumber = 0;
+        }
+
         public void NextLevel()
         {
+            print("Ok wot + " + weekNumber);
             // If this isn't the final week, level up.
             if(weekNumber + 1 < player.Count)
             {
@@ -55,7 +62,7 @@ namespace CertIVSpeedrun.Player
                 // Updates the quests.
                 QuestManager.Instance.LevelUpUI(weekNumber, player[weekNumber].toDoList);
             }
-            else
+            else if (weekNumber + 1 >= player.Count)
             {
                 EndTheGame();
             }
