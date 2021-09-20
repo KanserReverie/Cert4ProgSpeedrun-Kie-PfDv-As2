@@ -46,6 +46,23 @@ namespace CertIVSpeedrun.Player
             // If this isn't the final week, level up.
             if(weekNumber + 1 < player.Count)
             {
+                // Changes the Rigidbody and camera over to the new one
+                ChangeRigidbodyAndCamera();
+                // Next week.
+                weekNumber++;
+                
+
+                // Updates the quests.
+                QuestManager.Instance.LevelUpUI(weekNumber, player[weekNumber].toDoList);
+            }
+            else
+            {
+                EndTheGame();
+            }
+        }
+
+        private void ChangeRigidbodyAndCamera()
+        {
                 Rigidbody myOldRigidbody = new Rigidbody();
                 Vector3 myOldRigidbodyPosition = new Vector3();
                 Vector3 myOldRigidbodyVelocity = new Vector3();
@@ -72,13 +89,11 @@ namespace CertIVSpeedrun.Player
                 mainCamera.FollowThisPlayer(player[weekNumber+1].player.transform,myPlayerRigidbody);
                 // Turn off the old player.
                 player[weekNumber].gameObject.SetActive(false);
-                // Next week.
-                weekNumber++;
                 // Turns player on.
-                player[weekNumber].gameObject.SetActive(true);
+                player[weekNumber+1].gameObject.SetActive(true);
                 
                 // Makes the new Rigidbody the same as the last one.
-                if(weekNumber > 1)
+                if(weekNumber+1 > 1)
                 {
                     myPlayerRigidbody.position = myOldRigidbodyPosition;
                     myPlayerRigidbody.velocity = myOldRigidbodyVelocity;
@@ -86,14 +101,6 @@ namespace CertIVSpeedrun.Player
                     myPlayerRigidbody.rotation = myOldRigidbodyRotation;
                     PlayerControlsManager.Instance.myRigidbody = myPlayerRigidbody;
                 }
-                
-                // Updates the quests.
-                QuestManager.Instance.LevelUpUI(weekNumber, player[weekNumber].toDoList);
-            }
-            else
-            {
-                EndTheGame();
-            }
         }
 
         private void EndTheGame()

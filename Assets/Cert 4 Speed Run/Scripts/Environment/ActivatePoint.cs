@@ -12,6 +12,7 @@ namespace CertIVSpeedrun.Environment
 		[SerializeField] private Material usedMaterial;
 		[SerializeField] private MeshRenderer pointMesh;
 		[SerializeField] private GameObject[] objectsToDeleteOnActivation;
+		[SerializeField] private GameObject[] objectsToActivateOnActivation;
 
 		private void Start()
 		{
@@ -44,18 +45,41 @@ namespace CertIVSpeedrun.Environment
 			isClicked = true;
 			pointMesh.material = usedMaterial;
 			StartCoroutine(nameof(DeleteGameObjects));
+			StartCoroutine(nameof(ActivateGameObjects));
 		}
 
 		// Deletes all the game objects in the array.
 		private IEnumerator DeleteGameObjects()
 		{
-			if(objectsToDeleteOnActivation != null)
+			if(objectsToDeleteOnActivation != null && objectsToDeleteOnActivation.Length > 0)
 			{
 				for(int i = 0; i < objectsToDeleteOnActivation.Length; i++)
 				{
 					GameObject o = objectsToDeleteOnActivation[i];
-					o.gameObject.SetActive(false);
-					yield return (1.2f);
+
+					if(o != null)
+					{
+						o.gameObject.SetActive(false);
+						yield return (1.2f);
+					}
+				}
+			}
+		}
+		
+		// Activates all the game objects in the array.
+		private IEnumerator ActivateGameObjects()
+		{
+			if(objectsToActivateOnActivation != null && objectsToActivateOnActivation.Length > 0)
+			{
+				for(int i = 0; i < objectsToActivateOnActivation.Length; i++)
+				{
+					GameObject o = objectsToActivateOnActivation[i];
+
+					if(o != null)
+					{
+						o.gameObject.SetActive(true);
+						yield return (1.2f);
+					}
 				}
 			}
 		}
