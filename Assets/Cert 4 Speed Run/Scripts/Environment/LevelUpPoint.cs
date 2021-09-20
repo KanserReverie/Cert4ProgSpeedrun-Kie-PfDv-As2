@@ -31,6 +31,7 @@ namespace CertIVSpeedrun.Environment
                     }
                 }
             }
+            this.gameObject.SetActive(false);
         }
     }
 }

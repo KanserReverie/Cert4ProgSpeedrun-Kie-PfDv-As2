@@ -1021,14 +1021,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 122344627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b3d4524eb31366d4fa52ea393be2bead, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e959112d9d7fcf459cc3a50ee92f456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myRigidbody: {fileID: 122344630}
-  step1Btn: {fileID: 2038328910}
-  UIControls: {fileID: 1238532021}
-  groundChecker: {fileID: 496874995}
-  animatorControler: {fileID: 0}
+  myRigidbody: {fileID: 0}
 --- !u!54 &122344630
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1044,7 +1040,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 120
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!4 &128877533 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2774970167542950604, guid: 47fc94b54edf7b9459577b8c66aa1e18, type: 3}
@@ -1201,7 +1197,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e35e7b4234a2a114994d4b949a551269, type: 2}
+  - {fileID: 2100000, guid: 614acc9d1e4a6c7409b3f216a3868167, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1458,7 +1454,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 200765424}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 122344628}
@@ -2083,7 +2079,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e35e7b4234a2a114994d4b949a551269, type: 2}
+  - {fileID: 2100000, guid: 614acc9d1e4a6c7409b3f216a3868167, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3259,7 +3255,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e35e7b4234a2a114994d4b949a551269, type: 2}
+  - {fileID: 2100000, guid: 614acc9d1e4a6c7409b3f216a3868167, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3798,7 +3794,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &598563708
 Transform:
   m_ObjectHideFlags: 0
@@ -5776,7 +5772,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e35e7b4234a2a114994d4b949a551269, type: 2}
+  - {fileID: 2100000, guid: 614acc9d1e4a6c7409b3f216a3868167, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8364,7 +8360,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e35e7b4234a2a114994d4b949a551269, type: 2}
+  - {fileID: 2100000, guid: 614acc9d1e4a6c7409b3f216a3868167, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8751,7 +8747,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2774970167542950604, guid: 47fc94b54edf7b9459577b8c66aa1e18, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 48.77
+      value: 35.77
       objectReference: {fileID: 0}
     - target: {fileID: 2774970167542950604, guid: 47fc94b54edf7b9459577b8c66aa1e18, type: 3}
       propertyPath: m_LocalPosition.z
@@ -11520,6 +11516,7 @@ MonoBehaviour:
   player:
   - {fileID: 598563709}
   - {fileID: 2141818780}
+  - {fileID: 200765426}
   mainCamera: {fileID: 1976090110}
   myPlayerRigidbody: {fileID: 0}
 --- !u!1001 &959581634
@@ -11855,7 +11852,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e35e7b4234a2a114994d4b949a551269, type: 2}
+  - {fileID: 2100000, guid: 614acc9d1e4a6c7409b3f216a3868167, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17117,8 +17114,9 @@ GameObject:
   - component: {fileID: 1438311918}
   - component: {fileID: 1438311917}
   - component: {fileID: 1438311915}
+  - component: {fileID: 1438311916}
   m_Layer: 14
-  m_Name: Activation Point (2)
+  m_Name: Level Up Point 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17132,7 +17130,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1438311913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 181.07, y: -64.92553, z: -0.2259}
+  m_LocalPosition: {x: 181.1, y: -65.18, z: -0.2259}
   m_LocalScale: {x: 2.6299999, y: 5.13, z: 3.6676815}
   m_Children: []
   m_Father: {fileID: 1649271713}
@@ -17150,6 +17148,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef494b267e0777c41b0da2fbdbc88d07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1438311916
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1438311913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd445fcf08e88a14aab3682e729d3675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectsToDeleteOnLevelup: []
+  objectsToMakeActiveOnLevelup: []
 --- !u!65 &1438311917
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -24796,7 +24808,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 120
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!95 &1697107397
 Animator:
   serializedVersion: 3
@@ -25396,6 +25408,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1743518385}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1748179730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1748179732}
+  - component: {fileID: 1748179731}
+  m_Layer: 0
+  m_Name: PostProcessing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1748179731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748179730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: 9fb7cc5719bb9584592b11abf59c8bd8, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 0.28
+  priority: 0
+--- !u!4 &1748179732
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1748179730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1758927098
 GameObject:
   m_ObjectHideFlags: 0
@@ -25462,7 +25522,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e35e7b4234a2a114994d4b949a551269, type: 2}
+  - {fileID: 2100000, guid: 614acc9d1e4a6c7409b3f216a3868167, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -34173,7 +34233,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e35e7b4234a2a114994d4b949a551269, type: 2}
+  - {fileID: 2100000, guid: 614acc9d1e4a6c7409b3f216a3868167, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -37469,7 +37529,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2141818779
 Transform:
   m_ObjectHideFlags: 0
@@ -40051,7 +40111,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2774970167542950604, guid: 47fc94b54edf7b9459577b8c66aa1e18, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 41.27
+      value: 28.27
       objectReference: {fileID: 0}
     - target: {fileID: 2774970167542950604, guid: 47fc94b54edf7b9459577b8c66aa1e18, type: 3}
       propertyPath: m_LocalPosition.z
