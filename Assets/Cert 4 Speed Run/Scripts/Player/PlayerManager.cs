@@ -105,6 +105,7 @@ namespace CertIVSpeedrun.Player
 
         private void EndTheGame()
         {
+            ExitMenu.Instance.ExitGame();
             print("GAME OVER MAN, GAME OVER");
         }
 
