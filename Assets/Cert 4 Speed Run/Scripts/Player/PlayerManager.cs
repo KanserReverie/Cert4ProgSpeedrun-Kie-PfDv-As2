@@ -47,9 +47,9 @@ namespace CertIVSpeedrun.Player
             weekNumber = 0;
         }
 
-        public void NextLevel()
+        public void NextLevel(int _nextLevel)
         {
-            print("Ok wot + " + weekNumber);
+            weekNumber = _nextLevel - 1;
             // If this isn't the final week, level up.
             if(weekNumber + 1 < player.Count)
             {
@@ -70,7 +70,7 @@ namespace CertIVSpeedrun.Player
 
         private void ChangeRigidbodyAndCamera()
         {
-            Rigidbody myOldRigidbody = new Rigidbody();
+                Rigidbody myOldRigidbody = new Rigidbody();
                 Vector3 myOldRigidbodyPosition = new Vector3();
                 Vector3 myOldRigidbodyVelocity = new Vector3();
                 Quaternion myOldRigidbodyRotation = new Quaternion();
@@ -89,7 +89,7 @@ namespace CertIVSpeedrun.Player
                 // Saves the position of the old player.
                 Vector3 oldPlayerPosition = player[weekNumber].player.gameObject.transform.position;
                 // Moves the player to the old player
-                player[weekNumber].player.gameObject.transform.position = oldPlayerPosition;
+                player[weekNumber+1].player.gameObject.transform.position = oldPlayerPosition;
                 // Gets the next Rigidbody.
                 myPlayerRigidbody = player[weekNumber + 1].player.GetComponentInChildren<Rigidbody>();
                 
@@ -119,7 +119,7 @@ namespace CertIVSpeedrun.Player
         public void StartGame()
         {
             QuestManager.Instance.StartGame();
-            NextLevel();
+            NextLevel(1);
             mainCamera.enabled = true;
         }
     }

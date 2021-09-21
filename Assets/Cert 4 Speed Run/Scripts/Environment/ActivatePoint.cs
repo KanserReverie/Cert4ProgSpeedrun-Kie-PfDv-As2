@@ -62,7 +62,7 @@ namespace CertIVSpeedrun.Environment
 						o.gameObject.SetActive(false);
 					}
 
-					yield return new WaitForSeconds(1.2f);
+					yield return new WaitForSeconds(0.8f);
 				}
 			}
 		}
@@ -81,7 +81,7 @@ namespace CertIVSpeedrun.Environment
 						o.gameObject.SetActive(true);
 					}
 					
-					yield return new WaitForSeconds(1.2f);
+					yield return new WaitForSeconds(0.8f);
 				}
 			}
 		}

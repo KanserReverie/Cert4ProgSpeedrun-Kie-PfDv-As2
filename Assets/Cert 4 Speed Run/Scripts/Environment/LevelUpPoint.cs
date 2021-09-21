@@ -7,11 +7,12 @@ namespace CertIVSpeedrun.Environment
     {
         [SerializeField] private GameObject[] objectsToDeleteOnLevelup;
         [SerializeField] private GameObject[] objectsToMakeActiveOnLevelup;
+        [SerializeField] private int levelTo;
         private void OnTriggerEnter(Collider other)
         {
             if(other.gameObject.layer == LayerMask.NameToLayer("Player"))
             {
-                PlayerManager.Instance.NextLevel();
+                PlayerManager.Instance.NextLevel(levelTo);
 
                 if(objectsToDeleteOnLevelup != null)
                 {
