@@ -61,6 +61,12 @@ namespace CertIVSpeedrun.Camera
             mainCamera = GetComponent<UnityEngine.Camera>();
         }
 
+        private void Update()
+        {
+            float x = 0;
+            x += Time.deltaTime;
+        }
+
         // Update is called once per frame
         private void LateUpdate()
         {
@@ -109,6 +115,11 @@ namespace CertIVSpeedrun.Camera
             yOffset = newYoffset;
             lerpYDirection = false;
             yield return null;
+        }
+
+        public void StartLerpingInY()
+        {
+            lerpYDirection = true;
         }
 
         private IEnumerator CameraZoomOut(float _zoomOutTime)
