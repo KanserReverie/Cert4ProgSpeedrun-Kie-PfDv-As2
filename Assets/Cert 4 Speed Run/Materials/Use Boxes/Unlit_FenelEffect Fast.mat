@@ -22,9 +22,9 @@ Material:
     m_Floats:
     - _ColorEnd: 1
     - _ColorStart: 1
-    - _Height: 0.02
-    - _Speed: 0.3
+    - _Height: 0.0342
+    - _Speed: 0.495
     m_Colors:
-    - _ColorA: {r: 0, g: 0.1509434, b: 0.038171303, a: 0}
+    - _ColorA: {r: 0.021733703, g: 0.31132078, b: 0.09930165, a: 0}
     - _ColorB: {r: 0.01886791, g: 0.01886791, b: 0.01886791, a: 0.61960787}
   m_BuildTextureStacks: []

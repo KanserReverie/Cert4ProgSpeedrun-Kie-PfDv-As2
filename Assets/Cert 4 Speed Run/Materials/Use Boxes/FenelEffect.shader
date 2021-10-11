@@ -6,7 +6,7 @@ Shader "Unlit/FenelEffect"
         _ColorB("Color B", Color) = (0,0,0,0)
         _ColorStart("Color Start", range(0,1)) = 0
         _ColorEnd("Color End", range(0,1)) = 1
-        _Speed("Speed of Shader", range(0.01,0.3)) = 0.3
+        _Speed("Speed of Shader", range(0.01,0.7)) = 0.3
         _Height("Hight of CosWave", range(0,0.1)) = 0.01
     }
     SubShader

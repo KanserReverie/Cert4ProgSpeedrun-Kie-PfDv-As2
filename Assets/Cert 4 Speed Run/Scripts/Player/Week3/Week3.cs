@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using CertIVSpeedrun.Player;
 using CertIVSpeedrun.Camera;
+using CertIVSpeedrun.UI;
 
 namespace CertIVSpeedrun.Player.Week3
 {
@@ -16,6 +17,7 @@ namespace CertIVSpeedrun.Player.Week3
         // Start is called before the first frame update
         private void Start()
         {
+            ExitMenu.Instance.ExitGame();
             myRigidbody = GetComponent<Rigidbody>();
             PlayerControlsManager.Instance.speed += 1;
             PlayerControlsManager.Instance.jumpForce += 1;
